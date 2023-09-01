@@ -34,12 +34,21 @@ function App() {
       fetchQuotes();
     },[]);
 
+    const handleCategoryChange = (e) => {
+      setCategory(e.target.value)
+    }
+
+    const filteredQuotes = category === "All" ?  quotes : quotes.filter(quote => quote.categories.includes(category)) ;
+  
+    
+
+
     console.log(quotes);
   return (
     
     <div className='App'>
       <Header />
-      <main>{ loading ? <Loader /> : <Quotes quotes={quotes} categories={categories} category={category}/>}</main>
+      <main>{ loading ? <Loader /> : <Quotes filteredQuotes={filteredQuotes} categories={categories} category={category} handleCategoryChange={handleCategoryChange}  />}</main>
       <Footer />
     </div>
   );
