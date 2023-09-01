@@ -1,17 +1,21 @@
 import React from "react";
+import { Heart } from "react-feather";
 
-const QuoteCard = ({ quote }) => {
-    
+const QuoteCard = ({ quote, addToFavorites }) => {
+
     return (
-    <article className="quote-card">
-        <div>
-            <p className="categories">{quote.categories.map((category) => (<span className="category" key={category}>{category}</span>))}</p>
-            <h3>{quote.text}</h3>
-        </div>
-        <footer>
-            <p className="author">{quote.author}</p>
-        </footer>
-    </article>
+        <article className="quote-card">
+            <div>
+                <p className="categories">{quote.categories.map((category) => (<span className="category" key={category}>{category}</span>))}</p>
+                <h3>{quote.text}</h3>
+            </div>
+            <footer>
+                <p className="author">{quote.author}</p>
+                <p className="add-favorite" onClick={addToFavorites}>
+                    <Heart />
+                </p>
+            </footer>
+        </article>
     )
 
 }
