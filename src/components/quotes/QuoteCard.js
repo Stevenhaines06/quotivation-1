@@ -11,7 +11,7 @@ const QuoteCard = ({ quote, addToFavorites }) => {
             </div>
             <footer>
                 <p className="author">{quote.author}</p>
-                <p className="add-favorite" onClick={addToFavorites}>
+                <p className="add-favorite" onClick={() =>addToFavorites(quote.id)}>
                     <Heart />
                 </p>
             </footer>

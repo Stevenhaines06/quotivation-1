@@ -43,18 +43,37 @@ function App() {
   const filteredQuotes = category === "All" ? quotes : quotes.filter(quote => quote.categories.includes(category));
 
   const addToFavorites = (quoteId) => {
-    console.log(`In favorite quotes with id ${quoteId}`);
+    const selectedQuote = quotes.find(quote => quote.id === quoteId);
+    const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id);
+     if (alreadyFavorite) {
+      console.log("You've already favourited this quote");
+     }
+    // remember you can iterate through a new array's items without have pre-defined iterations (how favorite and favorite.id haven't been labelled yet)
+      else if (favoriteQuotes.length < maxFaves) {
+      setFavoriteQuotes([...favoriteQuotes, selectedQuote]);
+      console.log("Added to favorites!");
+      console.log(favoriteQuotes)
+    } else {
+      console.log("Max reached, delete one fav to add another!");
+    }
   }
 
 
 
 
-  console.log(quotes);
+  // console.log(quotes);
   return (
 
     <div className='App'>
       <Header />
       <main>
+        <section className="favorite-quotes">
+          <div className="wrapper quotes">
+            <h3>Top 3 favorite quotes</h3>
+            {favoriteQuotes.length >= 1 && JSON.stringify(favoriteQuotes)}
+            {/* could also just use zero instead of greater or equal to one */}
+          </div>
+        </section>
         {loading ? <Loader /> : <Quotes filteredQuotes={filteredQuotes} categories={categories} category={category} handleCategoryChange={handleCategoryChange} addToFavorites={addToFavorites} />}</main>
       <Footer />
     </div>
