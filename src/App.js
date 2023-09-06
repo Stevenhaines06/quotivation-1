@@ -59,7 +59,11 @@ function App() {
     }
   }
 
-
+    const removeFromFavorites = (quoteId) => {
+      const updatedFavorites = (quote) => favoriteQuotes.filter((quote) => quote.id !== quoteId);
+      setFavoriteQuotes(updatedFavorites);
+      //if it seems like multiple uses of one element...consider how/what is being used and what is necessary, especially if it is a necessary property like quote.id
+    }
 
 
   // console.log(quotes);
@@ -68,8 +72,8 @@ function App() {
     <div className='App'>
       <Header />
       <main>
-      <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={maxFaves} />      
-        {loading ? <Loader /> : <Quotes filteredQuotes={filteredQuotes} categories={categories} category={category} handleCategoryChange={handleCategoryChange} addToFavorites={addToFavorites} />}
+      <FavoriteQuotes favoriteQuotes={favoriteQuotes} removeFromFavorites={removeFromFavorites} maxFaves={maxFaves} />      
+        {loading ? <Loader /> : <Quotes filteredQuotes={filteredQuotes} categories={categories} category={category} handleCategoryChange={handleCategoryChange} addToFavorites={addToFavorites} favoriteQuotes={favoriteQuotes} />}
       </main>
       <Footer />
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import QuoteCard from "./QuoteCard";
 import CategoryForm from "./CategoryForm.js";
 
-const Quotes = ({ filteredQuotes, category, categories, handleCategoryChange, addToFavorites }) => {
+const Quotes = ({ filteredQuotes, category, categories, handleCategoryChange, addToFavorites, favoriteQuotes }) => {
 
     return (
         <section className="all-quotes">
@@ -14,7 +14,7 @@ const Quotes = ({ filteredQuotes, category, categories, handleCategoryChange, ad
                     <CategoryForm categories={categories} category={category} handleCategoryChange={handleCategoryChange} />
                 </div>
 
-                {filteredQuotes.map((quote) => (<QuoteCard quote={quote} key={quote.id} addToFavorites={addToFavorites}/>))}
+                {filteredQuotes.map((quote) => (<QuoteCard quote={quote} key={quote.id} addToFavorites={addToFavorites} favoriteQuotes={favoriteQuotes}/>))}
             </div>
 
             {/* reminder of mistake - remember to ask about mapping over and using { instead of ( for the return )} */}
