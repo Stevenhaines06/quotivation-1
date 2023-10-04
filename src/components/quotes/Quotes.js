@@ -6,7 +6,7 @@ const Quotes = ({ filteredQuotes, category, categories, handleCategoryChange, ad
 
     return (
         <section className="all-quotes">
-
+            {/* check for netlify */}
             <div className="quotes wrapper">
                 <div className="category-header">
                     <h2 className="category-header">Pick Your Favorite Quotes Below</h2>
