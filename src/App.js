@@ -9,13 +9,13 @@ import "./App.css";
 
 function App() {
 
-  const [quotes, setQuotes] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [category, setCategory] = useState("All")
+  const [quotes, setQuotes] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState("All");
   const [favoriteQuotes, setFavoriteQuotes] = useState(
     JSON.parse(window.localStorage.getItem("favoriteQuotes"))
-  )
-  const [messageText, setMessageText] = useState("")
+   || []); 
+  const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
 
